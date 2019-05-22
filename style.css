@@ -1,4 +1,4 @@
-html{
+body{
     background-image: url("img/background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,16 +8,13 @@ html{
 .main[data-screen="menu"] section:not(.menu) {
     display: none;
 }
-
-.main[data-screen="simple"] section:not(.simple) {
+.main[data-screen="simple"] section:not(.container) {
     display: none;
 }
-
-.main[data-screen="medium"] section:not(.medium) {
+.main[data-screen="medium"] section:not(.container) {
     display: none;
 }
-
-.main[data-screen="complicated"] section:not(.complicated) {
+.main[data-screen="complicated"] section:not(.container) {
     display: none;
 }
 
@@ -106,36 +103,34 @@ html{
 }
 
 
-.simple{
-    position: absolute;
-    top: calc((100% - 341px) / 2);
-    left: calc((100% - 218px *3 - 24px * 2) / 2);
+
+.container__wrap{
+    display: none;
 }
-.simple__cards{
+.container__cards{
+    position: absolute;
     display: flex;
     justify-content: center;
     align-content: center;
 }
-.card{
+
+.container__wrap-card{
     width: 218px;
     height: 341px;
     background-repeat: no-repeat;
     box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     border-radius: 10px;
-    margin-right: 24px;
+    margin: 12px;
     position: relative;
     perspective: 600px;
 }
-.card:hover{
+.container__wrap-card:hover{
     cursor: pointer;
     margin-top: -24px;
     box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
     transform: rotate(-3.08deg);
 }
-.simple__card:last-child{
-    margin-right: 0;
-}
-.item{
+.container__card{
     border-radius: 10px;
     position: absolute;
     top: 0;
@@ -145,17 +140,17 @@ html{
     transition: transform 1s;
     transform-style: preserve-3d;
 }
-.item__face{
+.card__face{
     position: absolute;
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
 }
-.item__face_front{
+.card__face_front{
     background-image: url("img/card.jpg");
     border-radius: 10px;
 }
-.item__face_back{
+.card__face_back{
     transform: rotateY(180deg);
     background-image: url("img/gameover.jpg");
 }
@@ -166,53 +161,20 @@ html{
     background-image: url("img/card-bug.jpg");
 }
 
-
+.simple{
+    top: calc((100% - 341px) / 2);
+    left: calc((100% - 218px *3 - 24px * 2) / 2);
+}
 .medium{
-    position: absolute;
+    flex-wrap: wrap;
+    max-width: 726px;
     top: calc((100% - 341px * 2 -   24px) / 2);
     left: calc((100% - 218px *3 - 24px * 2) / 2);
 }
-.medium__cards{
-    max-width: 702px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-}
-.medium__card,
-.complicated__card{
-    margin-bottom: 24px;
-}
-.medium__card:nth-child(3),
-.medium__card:nth-child(4),
-.medium__card:last-child{
-    margin-bottom: 0;
-}
-.medium__card:nth-child(3),
-.medium__card:last-child{
-    margin-right: 0;
-}
 
 .complicated{
-    position: absolute;
+    flex-wrap: wrap;
+    max-width: 1210px;
     top: calc((100% - 341px * 2 -   24px) / 2);
     left: calc((100% - 218px * 5 - 24px * 4) / 2);
-}
-.complicated__cards{
-    max-width: 1186px;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-}
-.complicated__card:last-child,
-.complicated__card:nth-child(6),
-.complicated__card:nth-child(7),
-.complicated__card:nth-child(8),
-.complicated__card:nth-child(9){
-    margin-bottom: 0;
-}
-.complicated__card:nth-child(5),
-.complicated__card:last-child{
-    margin-right: 0;
 }
